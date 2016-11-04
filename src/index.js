@@ -49,7 +49,7 @@ Deal: function() {
 var Deck = window.getDeck().shuffle()
 this.setState({
   hand: [Deck]
-    })
+}) //Can't figure out how to make it understand that hand is a state that stores the string of cards from my variable Deck.
 },
 
   getInitialState: function(){
@@ -62,7 +62,7 @@ this.setState({
     return (
       <div>
         <h1>Welcome to the KIEI-924 Casino!</h1>
-        <Card value={this.state.beginDeck[0]}/>
+        <Card value={this.state.beginDeck[0]}/> // If I could figure out how to pull the strings from my Deck then I would change this state to hand.
         <Card value={this.state.beginDeck[1]}/>
         <Card value={this.state.beginDeck[2]}/>
         <Card value={this.state.beginDeck[3]}/>
