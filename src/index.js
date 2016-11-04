@@ -36,44 +36,37 @@ var Card = React.createClass({
   render: function() {
     return(
       <div className="col-sm-2">
-        <h1><img className="img-responsive" src={"http://golearntocode.com/images/cards/" + this.props.hand + ".png"} /></h1>
+        <h1><img className="img-responsive" src={"http://golearntocode.com/images/cards/" + this.props.value  + ".png"} /></h1>
       </div>
     )
   }
 })
 
-var Deck = function render(){
-    return window.getDeck().shuffle()
-    this.setState({
-      hand: Deck[0,1,2,3,4]
-    })
-  }
-
 
 var App = React.createClass({
 
-  Deal: function() {
-    var Hand=Deck[0,1,2,3,4];
-    this.setState(
-      {hand: Hand}
-    );
-
-  },
+Deal: function() {
+var Deck = window.getDeck().shuffle()
+this.setState({
+  hand: [Deck]
+    })
+},
 
   getInitialState: function(){
     return {
-      hand: Card};
+      beginDeck: ["face_down", "face_down", "face_down", "face_down", "face_down"]
+    }
 },
 
   render: function() {
     return (
       <div>
         <h1>Welcome to the KIEI-924 Casino!</h1>
-        <Card hand={this.state.hand}/>
-        <Card hand={this.state.hand}/>
-        <Card hand={this.state.hand}/>
-        <Card hand={this.state.hand}/>
-        <Card hand={this.state.hand}/>
+        <Card value={this.state.beginDeck[0]}/>
+        <Card value={this.state.beginDeck[1]}/>
+        <Card value={this.state.beginDeck[2]}/>
+        <Card value={this.state.beginDeck[3]}/>
+        <Card value={this.state.beginDeck[4]}/>
 
           <div className="col-sm-2">
             <h1><a href="#" className="btn btn-success" onClick={this.Deal}>Deal</a></h1>
@@ -83,7 +76,6 @@ var App = React.createClass({
     )
   }
 })
-
 
 
 ReactDOM.render(<App />, document.getElementById("app"))
